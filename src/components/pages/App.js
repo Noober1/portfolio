@@ -1,10 +1,19 @@
-import { createMuiTheme, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
+import { AppBar, Button, createMuiTheme, Grid, IconButton, makeStyles, ThemeProvider, Toolbar, Typography } from '@material-ui/core';
 import { useState } from 'react';
 import { CookiesProvider, useCookies } from "react-cookie"
 import '../../assets/styles/App.css';
 import { ContextProvider } from '../utils/stateProvider';
 import Themes from '../styling/theming';
 import Buttons from './styles/buttons';
+import PaperCustom from './styles/paper';
+import ButtonHonkai from '../styling/buttons';
+import MenuIcon from '@material-ui/icons/Menu';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+} from "react-router-dom";
 
 function App() {
 	const themeColor = '#E34234'
@@ -43,11 +52,34 @@ function App() {
 		<ContextProvider themeSwitcher={switchThemeMode}>
 			<ThemeProvider theme={theme}>
 				<CookiesProvider>
-					<Grid container className={classes.root}>
-						<Grid item xs={12}>
-							<Buttons switcher={switchThemeMode}/>
+					<Router>
+						<Grid container className={classes.root} spacing={2}>
+							<Grid item xs={12}>
+								<AppBar position="static" component="nav" color="inherit">
+									<Toolbar>
+										<ButtonHonkai color="primary" component={Link} to="/">
+											Home
+										</ButtonHonkai>
+										<ButtonHonkai color="primary" component={Link} to="/paper">
+											Paper
+										</ButtonHonkai>
+									</Toolbar>
+								</AppBar>
+							</Grid>
+							<Grid item xs={12}>
+									<div>
+										<Switch>
+											<Route path="/paper">
+												<PaperCustom />
+											</Route>
+											<Route path="/">
+												<Buttons switcher={switchThemeMode}/>
+											</Route>
+										</Switch>
+									</div>
+							</Grid>
 						</Grid>
-					</Grid>
+					</Router>
 				</CookiesProvider>
 			</ThemeProvider>
 		</ContextProvider>
