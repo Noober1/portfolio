@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const Styling = ({ palette, spacing }) => {
 	var
-		underStripeBorderColor = palette.buttonHonkai.borderBottomColor,
+		underStripeBorderColor = palette.text.primary,
 		buttonColor = '#212121',
 		buttonDefaultBackground = 'linear-gradient(0deg, #ffdf00 30%, #efd100  90%)',
 		buttonPrimaryBackground = '#19d7fc'
@@ -143,7 +143,6 @@ const Styling = ({ palette, spacing }) => {
 
 function ButtonHonkai(props) {
 	const { classes, children, className, color, ...other } = props;
-	console.log(color)
 	return (
 		<Button
 			variant="contained"
