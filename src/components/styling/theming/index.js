@@ -24,10 +24,10 @@ const Themes = (type,primaryColor) => {
 					main:primaryColor
 				},
 				primary: {
-					main:'#5587fe'
+					main:'#ffdf00'
 				},
 				secondary: {
-					main: primaryColor,
+					main: '#19d7fc',
 				}
 			}
 		},
@@ -54,11 +54,11 @@ const Themes = (type,primaryColor) => {
 					main:primaryColor
 				},
 				primary: {
-					main:'#5587fe'
+					main:'#ffdf00'
 				},
 				secondary: {
-					main: primaryColor,
-				},
+					main: '#19d7fc',
+				}
 			}
 		}
 	}

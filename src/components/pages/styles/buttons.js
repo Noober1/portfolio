@@ -19,12 +19,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const Buttons = ({switcher}) => {
+const Buttons = () => {
 
     const classes = useStyles()
-
-    const switchToDark = () => switcher('dark')
-    const switchToLight = () => switcher('light')
 
     const Title = ({title,subtitle}) => (
         <>
@@ -39,12 +36,6 @@ const Buttons = ({switcher}) => {
 
     return (
         <>
-            <ButtonHonkai onClick={switchToLight} color="primary">
-                Light Mode
-            </ButtonHonkai>
-            <ButtonHonkai onClick={switchToDark} color="primary">
-                Dark Mode
-            </ButtonHonkai>
             <Box m={1}>
                 <Title title="Button Honkai Style" subtitle="Yellow"/>
                 <ButtonHonkai size="small">
@@ -93,6 +84,21 @@ const Buttons = ({switcher}) => {
                 </ButtonHonkai><br/><br/>
                 <Paper className={classes.padding}>
                     {`<ButtonHonkai size="size" color="primary">Text</ButtonHonkai>`}
+                </Paper>
+            </Box>
+            <Box m={1}>
+                <Title title="Button Honkai Style" subtitle="outlined"/>
+                <ButtonHonkai variant="outlined" size="small">
+                    Small
+                </ButtonHonkai>
+                <ButtonHonkai variant="outlined">
+                    Medium (default)
+                </ButtonHonkai>
+                <ButtonHonkai variant="outlined" size="large">
+                    Large
+                </ButtonHonkai><br/>
+                <Paper className={classes.padding}>
+                    {`<ButtonHonkai variant="outlined" size="size">Large</ButtonHonkai>`}
                 </Paper>
             </Box>
             <Box m={1}>

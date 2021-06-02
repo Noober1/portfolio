@@ -5,7 +5,6 @@ import alertFrameMiddle from '../../../assets/images/alertframemiddle.png'
 import alertFrameBottom from '../../../assets/images/alertframebottom.png'
 import { fade, makeStyles } from '@material-ui/core'
 import ButtonHonkai from '../buttons'
-import clsx from 'clsx'
 
 const bgColor = '#303030'
 

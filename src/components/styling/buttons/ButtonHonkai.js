@@ -9,7 +9,7 @@ const Styling = ({ palette, spacing }) => {
 		underStripeBorderColor = palette.text.primary,
 		buttonColor = '#212121',
 		buttonDefaultBackground = 'linear-gradient(0deg, #ffdf00 30%, #efd100  90%)',
-		buttonPrimaryBackground = '#19d7fc'
+		buttonPrimaryBackground = palette.secondary.main
 	
 
 	return {
@@ -137,18 +137,29 @@ const Styling = ({ palette, spacing }) => {
 				borderBottom: '5px solid ' + underStripeBorderColor,
 				borderLeft: '5px solid transparent'
 			},
+		},
+		glitch:{
+			position:'absolute',
+			display:'grid',
+			alignItems:'center',
+			width:'100%',
+			height:'100%',
+			background:buttonDefaultBackground,
+			top:0,
+			left:0
 		}
 	}
 }
 
 function ButtonHonkai(props) {
-	const { classes, children, className, color, ...other } = props;
+	const { classes, children, className, variant, color, ...other } = props;
+	const isGlitchMode = (!variant === !color)
 	return (
 		<Button
-			variant="contained"
+			variant={variant || 'contained'}
 			color={color}
 			classes={{
-				root:clsx(classes.root,className),
+				root:clsx(classes.root,className, 'glitchy'),
 				label:classes.label,
 				sizeLarge:classes.sizeLarge,
 				sizeSmall:classes.sizeSmall,
@@ -160,6 +171,11 @@ function ButtonHonkai(props) {
 			{...other}
 		>
 			{children || 'medium'}
+			{isGlitchMode && 
+				<span className={clsx(classes.glitch, 'glitchy-object')}>
+					{children}
+				</span>
+			}
 		</Button>
 	);
 }

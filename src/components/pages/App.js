@@ -1,19 +1,12 @@
-import { AppBar, Box, Container, createMuiTheme, CssBaseline, Grid, makeStyles, ThemeProvider, Toolbar } from '@material-ui/core';
+import { createMuiTheme, CssBaseline, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
 import { useState } from 'react';
 import { CookiesProvider, useCookies } from "react-cookie"
 import '../../assets/styles/App.css';
 import { ContextProvider } from '../utils/stateProvider';
 import Themes from '../styling/theming';
-import Buttons from './styles/buttons';
-import PaperCustom from './styles/paper';
-import ButtonHonkai from '../styling/buttons';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link
-} from "react-router-dom";
-import SwalPage from './styles/swal';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { MainNavbar } from '../nano';
+import Routes from './Routes';
 
 function App() {
 	const themeColor = '#E34234'
@@ -27,6 +20,8 @@ function App() {
 	//create theming
 	const theme = createMuiTheme(Themes(themeMode,themeColor))
 
+	console.log(theme)
+
 	//function to switch theme
 	const switchThemeMode = (mode) => {
         setCookies('themeMode', mode, {
@@ -37,55 +32,40 @@ function App() {
 		setThemeMode(mode)
     }
 
-	const useStyles = makeStyles({
-		root:{
-			backgroundColor:theme.palette.background.default,
-			color:theme.palette.text.primary
-		}
+	const useStyles = makeStyles(() => {
+		const navbarSpacing = theme.spacing(5)
+
+		return({
+			root:{
+				backgroundColor:theme.palette.background.default,
+				color:theme.palette.text.primary
+			},
+			mainPage:{
+				minHeight:`calc(100vh - ${navbarSpacing}px)`,
+				paddingTop:navbarSpacing
+			}
+		})
 	})
 
 	const classes = useStyles()
 
 	return (
-		<ContextProvider themeSwitcher={switchThemeMode}>
+		<ContextProvider
+			themeSwitcher={switchThemeMode}
+			themeMode={themeMode}
+		>
 			<ThemeProvider theme={theme}>
 				<CookiesProvider>
 					<Router>
 						<CssBaseline/>
-						<Container maxWidth="xl" style={{padding:0}}>
-							<Grid container className={classes.root}>
-								<Grid item xs={12}>
-									<AppBar position="static" component="nav" color="inherit">
-										<Toolbar>
-											<ButtonHonkai color="primary" component={Link} to="/">
-												Home
-											</ButtonHonkai>
-											<ButtonHonkai color="primary" component={Link} to="/paper">
-												Paper
-											</ButtonHonkai>
-											<ButtonHonkai color="primary" component={Link} to="/swal">
-												Swal
-											</ButtonHonkai>
-										</Toolbar>
-									</AppBar>
-								</Grid>
-								<Grid item xs={12} component="main">
-									<Box p={2}>
-										<Switch>
-											<Route path="/paper">
-												<PaperCustom />
-											</Route>
-											<Route path="/swal">
-												<SwalPage/>
-											</Route>
-											<Route path="/">
-												<Buttons switcher={switchThemeMode}/>
-											</Route>
-										</Switch>
-									</Box>
-								</Grid>
+						<Grid container className={classes.root}>
+							<Grid item xs={12}>
+								<MainNavbar themeSwitcher={switchThemeMode}/>
 							</Grid>
-						</Container>
+							<Grid item xs={12} component="main" className={classes.mainPage}>
+								<Routes/>
+							</Grid>
+						</Grid>
 					</Router>
 				</CookiesProvider>
 			</ThemeProvider>
