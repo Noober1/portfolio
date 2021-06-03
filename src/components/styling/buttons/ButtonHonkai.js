@@ -37,11 +37,11 @@ const Styling = ({ palette, spacing }) => {
 				right:0,
 				background:underStripeBorderColor,
 			},
-			'&:hover&::after':{
+			'&:hover&::after,&.active&::after':{
 				transition:'all .2s ease-in .2s',
 				width:'100%',
 			},
-			'&:hover&::before':{
+			'&:hover&::before,&.active&::before':{
 				transition:'all .2s ease-in',
 				bottom:0,
 				right:0,
@@ -54,6 +54,9 @@ const Styling = ({ palette, spacing }) => {
 				height: 0,
 				borderBottom: '13px solid ' + underStripeBorderColor,
 				borderLeft: '13px solid transparent'
+			},
+			'&:active .glitchy-object':{
+				opacity:1
 			}
 		},
 		textPrimary:{
@@ -89,9 +92,10 @@ const Styling = ({ palette, spacing }) => {
 			border:'2px solid transparent',
 			background: buttonPrimaryBackground,
 			transform:'skew(-11deg)',
-			'&:hover':{
+			'&:hover,&:active,&.active':{
 				background:buttonPrimaryBackground,
-				borderColor:palette.text.primary
+				borderColor:palette.text.primary,
+				boxShadow:'0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
 			},
 			'&::before,&::after':{
 				content:'none'
@@ -120,7 +124,7 @@ const Styling = ({ palette, spacing }) => {
 				borderTop: '9px solid ' + underStripeBorderColor,
 				borderRight: '9px solid transparent'
 			},
-			'&:hover&::after,&:hover&::before':{
+			'&:hover&::after,&:hover&::before,&:active&::after,&:active&::before':{
 				transition:'all .3s ease-in-out',
 				width:'100%',
 			},

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Grid, makeStyles } from '@material-ui/core'
 import GridName from './gridName'
+import clsx from 'clsx'
+import Intro from './intro'
 
 const useStyles = makeStyles(() => ({
     bgRed:{
@@ -11,7 +13,7 @@ const useStyles = makeStyles(() => ({
     },
     bgBlue:{
         background:'blue'
-    }
+    },
 }))
 
 const MainPage = () => {
@@ -23,8 +25,11 @@ const MainPage = () => {
             <Grid item xs={12}>
                 <GridName/>
             </Grid>
-            <Grid item xs={12} className={classes.bgBlue}>
-                text
+            <Grid item xs={12}>
+                <Intro/>
+            </Grid>
+            <Grid item xs={12} className={classes.bgRed}>
+                <GridName/>
             </Grid>
         </Grid>
     )

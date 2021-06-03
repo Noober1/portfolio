@@ -1,6 +1,6 @@
 import { AppBar, makeStyles, Toolbar, Typography } from '@material-ui/core'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import ButtonHonkai from '../styling/buttons'
 import { BrightnessHighTwoTone, BrightnessLowTwoTone, AddBox, AddAPhoto } from '@material-ui/icons/';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,6 +8,7 @@ import { useAppContext } from '../utils/stateProvider';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx'
+import HtmlTooltip from '../pages/styles/tooltip';
 
 const useStyles = makeStyles(({palette,breakpoints, spacing}) => ({
     mainNavbar:{
@@ -108,7 +109,18 @@ const MainNavbar = () => {
         <>
             {menuList.map((item, index) => {
                 return(
-                    <ButtonHonkai key={index} glitch={true} className={classes.menuButton} color={menuButtonColor} variant={menuButtonVariant} size={menuButtonSize} component={Link} to={item.to}>
+                    <ButtonHonkai
+                        exact
+                        key={index}
+                        glitch={true}
+                        className={classes.menuButton}
+                        color={menuButtonColor}
+                        variant={menuButtonVariant}
+                        size={menuButtonSize}
+                        component={NavLink}
+                        to={item.to}
+                        activeClassName="active"
+                    >
                         {item.label}
                     </ButtonHonkai>
                 )
@@ -125,9 +137,21 @@ const MainNavbar = () => {
                     <MenuListRender/>
                 </div>
                 <div className={clsx(classes.menuWrapper, classes.sideRight)}>
-                    <IconButton color="secondary" onClick={themeToggler} >
-                    {themeMode == 'light' ? <BrightnessHighTwoTone/> : <BrightnessLowTwoTone/>}
-                    </IconButton>
+                    <HtmlTooltip
+                        placement="left"
+                        arrow={true}
+                        interactive={true}
+                        leaveDelay={1000}
+                        title={
+                            <Typography variant="subtitle1" component="span">
+                                Switch to {themeMode === 'light' ? 'dark mode' : 'light mode'}
+                            </Typography>
+                        }
+                    >
+                        <IconButton color="secondary" onClick={themeToggler} >
+                            {themeMode == 'light' ? <BrightnessHighTwoTone/> : <BrightnessLowTwoTone/>}
+                        </IconButton>
+                    </HtmlTooltip>
                     <IconButton color="secondary">
                         <AddBox/>
                     </IconButton>

@@ -36,7 +36,7 @@ const Buttons = () => {
 
     return (
         <>
-            <Box m={1}>
+            <Box m={1} mt={4}>
                 <Title title="Button Honkai Style" subtitle="Yellow"/>
                 <ButtonHonkai size="small">
                     Small

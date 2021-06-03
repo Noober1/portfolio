@@ -1,10 +1,10 @@
-import { createMuiTheme, responsiveFontSizes, CssBaseline, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
+import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSizes, CssBaseline, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
 import { useState } from 'react';
 import { CookiesProvider, useCookies } from "react-cookie"
 import '../../assets/styles/App.css';
 import { ContextProvider } from '../utils/stateProvider';
 import Themes from '../styling/theming';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { MainNavbar } from '../nano';
 import Routes from './Routes';
 
@@ -15,11 +15,12 @@ function App() {
 	const [cookies, setCookies] = useCookies(['themeMode'])
 
 	//themeMode state
-	const [themeMode, setThemeMode] = useState(() => cookies.themeMode ? cookies.themeMode : 'light')
+	const [themeMode, setThemeMode] = useState(() => cookies.themeMode ? cookies.themeMode : 'dark')
 
 	//create theming
 	let theme = createMuiTheme(Themes(themeMode,themeColor))
 	theme = responsiveFontSizes(theme)
+	console.log(theme)
 
 	//function to switch theme
 	const switchThemeMode = (mode) => {

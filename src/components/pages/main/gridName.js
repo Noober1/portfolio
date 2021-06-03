@@ -1,6 +1,8 @@
-import { Box, fade, makeStyles, Typography } from '@material-ui/core'
+import { Box, fade, IconButton, makeStyles, Typography } from '@material-ui/core'
+import { Facebook, Twitter, GitHub, Reddit } from '@material-ui/icons/';
 import React from 'react'
 import clsx from 'clsx'
+import HtmlTooltip from '../styles/tooltip';
 
 
 const useStyles = makeStyles(({palette,spacing}) => {
@@ -9,6 +11,8 @@ const useStyles = makeStyles(({palette,spacing}) => {
     return {
         gridName:{
             minHeight:'300px',
+            height:`calc(100vh - ${spacing(2)}px)`,
+            maxHeight:'25vw',
             display:'grid',
             alignItems:'center',
             overflowX:'hidden',
@@ -17,6 +21,7 @@ const useStyles = makeStyles(({palette,spacing}) => {
                 content: '\'\\00a0 \'',
                 width:'100%',
                 height:'50%',
+                maxHeight:'300px',
                 background:bgStripesFade,
                 position:'absolute',
                 bottom:0,
@@ -27,7 +32,6 @@ const useStyles = makeStyles(({palette,spacing}) => {
         bgStripes:{
             backgroundImage:`linear-gradient( -45deg, ${bgStripesFade} 25%, transparent 25%, transparent 50%, ${bgStripesFade} 50%, ${bgStripesFade} 75%, transparent 75%, transparent )`,
             backgroundSize:'61px 61px',
-            backgroundPosition:'fixed',
             animation:'stripe 1.5s infinite linear'
         },
         glitchWrapper: {
@@ -46,18 +50,54 @@ const useStyles = makeStyles(({palette,spacing}) => {
     }
 })
 
+const SocialMediaTooltip = ({children, title}) => (
+    <HtmlTooltip
+        title={
+            <Typography variant="subtitle1" component="span">
+                {title}
+            </Typography>
+        }
+    >
+        {children}
+    </HtmlTooltip>
+)
+
 const GridName = () => {
 
     const classes = useStyles()
 
     return (
         <Box p={1} className={clsx(classes.gridName, classes.bgStripes)}>
-            <Typography variant="h1" component="h1" align="center" className="text-impact-italic text-uppercase">
-                Cucu Ruhiyatna
-                <Typography variant="h1" component="span" align="center" className={classes.glitchWrapper}>
-                    <span className={clsx(classes.glitchText,"text-impact text-uppercase")}>Cucu Ruhiyatna</span>
+            <div>
+                <Typography variant="h1" component="h1" align="center" className="text-impact-italic text-uppercase">
+                    Cucu Ruhiyatna
+                    <Typography variant="h1" component="span" align="center" className={classes.glitchWrapper}>
+                        <span className={clsx(classes.glitchText,"text-impact text-uppercase")}>Cucu Ruhiyatna</span>
+                    </Typography>
                 </Typography>
-            </Typography>
+                <div style={{display:'block',textAlign:'center'}}>
+                    <SocialMediaTooltip title="Follow me on facebook">
+                        <IconButton href="https://fb.me/ruhiyatna.cucu" target="blank">
+                            <Facebook fontSize="large"/>
+                        </IconButton>
+                    </SocialMediaTooltip>
+                    <SocialMediaTooltip title="Follow me on Twitter">
+                        <IconButton href="https://twitter.com/home" target="blank" >
+                            <Twitter fontSize="large"/>
+                        </IconButton>
+                    </SocialMediaTooltip>
+                    <SocialMediaTooltip title="Follow me on Reddit">
+                        <IconButton href="https://www.reddit.com/user/lordazhura" target="blank" >
+                            <Reddit fontSize="large"/>
+                        </IconButton>
+                    </SocialMediaTooltip>
+                    <SocialMediaTooltip title="Follow me on GitHub">
+                        <IconButton href="https://github.com/Noober1" target="blank" >
+                            <GitHub fontSize="large"/>
+                        </IconButton>
+                    </SocialMediaTooltip>
+                </div>
+            </div>
         </Box>
     )
 }
