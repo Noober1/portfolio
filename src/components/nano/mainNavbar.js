@@ -5,6 +5,8 @@ import ButtonHonkai from '../styling/buttons'
 import { BrightnessHighTwoTone, BrightnessLowTwoTone, AddBox, AddAPhoto } from '@material-ui/icons/';
 import IconButton from '@material-ui/core/IconButton';
 import { useAppContext } from '../utils/stateProvider';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx'
 
 const useStyles = makeStyles(({palette,breakpoints, spacing}) => ({
@@ -52,6 +54,9 @@ const useStyles = makeStyles(({palette,breakpoints, spacing}) => ({
         top:0,
         right:0,
         textAlign:'right',
+        [breakpoints.down('sm')]: {
+            display:'none'
+        },
         '&::before,&::after':{
             content: '\'\\00a0 \'',
             position:'absolute',
@@ -61,15 +66,28 @@ const useStyles = makeStyles(({palette,breakpoints, spacing}) => ({
             right:0,
             width:'100%',
             height:'100%',
-            transform:'skew(13deg)',
+            transform:'skew(45deg)',
             background:palette.background.paper
         }
+    },
+    menuButton:{
+        minWidth:'120px',
+        [breakpoints.down('sm')]: {
+            minWidth:'auto',
+        },
     }
 }))
 
 const MainNavbar = () => {
 
     const { themeSwitcher, themeMode } = useAppContext()
+    const theme = useTheme();
+    const themeName = theme.palette.name || 'light'
+    const menuButtonVariant = themeName == 'dark' ? 'contained' : 'contained'
+    const menuButtonColor = themeName == 'dark' ? 'default' : 'primary'
+
+    const isScreenSizeLarge = useMediaQuery(theme.breakpoints.up('lg'));
+    const menuButtonSize = isScreenSizeLarge ? 'medium' : 'small'
 
     const themeToggler = () => {
         if(themeMode == 'light') {
@@ -79,24 +97,32 @@ const MainNavbar = () => {
         }
     }
 
+    const menuList = [
+        { to:'/', label:'Home' },
+        { to:'/button', label:'Button' },
+        { to:'/paper', label:'Paper' },
+        { to:'/swal', label:'Alert' }
+    ]
+
+    const MenuListRender = () => (
+        <>
+            {menuList.map((item, index) => {
+                return(
+                    <ButtonHonkai key={index} glitch={true} className={classes.menuButton} color={menuButtonColor} variant={menuButtonVariant} size={menuButtonSize} component={Link} to={item.to}>
+                        {item.label}
+                    </ButtonHonkai>
+                )
+            })}
+        </>
+    )
+
     const classes = useStyles()
 
     return (
         <AppBar position="fixed" component="nav" color="inherit" className={classes.mainNavbar}>
             <Toolbar className={classes.toolbar}>
                 <div className={clsx(classes.menuWrapper, classes.sideLeft)}>
-                    <ButtonHonkai color="primary" component={Link} to="/">
-                        Home
-                    </ButtonHonkai>
-                    <ButtonHonkai color="primary" component={Link} to="/button">
-                        Buttons
-                    </ButtonHonkai>
-                    <ButtonHonkai color="primary" component={Link} to="/paper">
-                        Paper
-                    </ButtonHonkai>
-                    <ButtonHonkai color="primary" component={Link} to="/swal">
-                        Swal
-                    </ButtonHonkai>
+                    <MenuListRender/>
                 </div>
                 <div className={clsx(classes.menuWrapper, classes.sideRight)}>
                     <IconButton color="secondary" onClick={themeToggler} >

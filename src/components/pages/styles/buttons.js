@@ -66,7 +66,7 @@ const Buttons = () => {
                 <ButtonHonkai color="primary">
                     Medium (default)
                 </ButtonHonkai>
-                <ButtonHonkai color="primary">
+                <ButtonHonkai glitch={true} color="primary">
                     Medium (default)
                 </ButtonHonkai>
                 <ButtonHonkai color="primary">

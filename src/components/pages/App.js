@@ -1,4 +1,4 @@
-import { createMuiTheme, CssBaseline, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, responsiveFontSizes, CssBaseline, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
 import { useState } from 'react';
 import { CookiesProvider, useCookies } from "react-cookie"
 import '../../assets/styles/App.css';
@@ -18,9 +18,8 @@ function App() {
 	const [themeMode, setThemeMode] = useState(() => cookies.themeMode ? cookies.themeMode : 'light')
 
 	//create theming
-	const theme = createMuiTheme(Themes(themeMode,themeColor))
-
-	console.log(theme)
+	let theme = createMuiTheme(Themes(themeMode,themeColor))
+	theme = responsiveFontSizes(theme)
 
 	//function to switch theme
 	const switchThemeMode = (mode) => {
@@ -60,7 +59,7 @@ function App() {
 						<CssBaseline/>
 						<Grid container className={classes.root}>
 							<Grid item xs={12}>
-								<MainNavbar themeSwitcher={switchThemeMode}/>
+								<MainNavbar/>
 							</Grid>
 							<Grid item xs={12} component="main" className={classes.mainPage}>
 								<Routes/>

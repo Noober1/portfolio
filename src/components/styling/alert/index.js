@@ -55,11 +55,11 @@ const Sweet = ({children, html, confirmButtonText, title, onConfirm, cancelButto
 
     const Wrapping = () => (
         <>
-            <ButtonHonkai className={classes.actionButton} onClick={() => MySwal.clickConfirm()}>
+            <ButtonHonkai glitch={true} className={classes.actionButton} onClick={() => MySwal.clickConfirm()}>
                 {confirmButtonText ? confirmButtonText : 'OK'}
             </ButtonHonkai>
             {cancelButtonText &&
-                <ButtonHonkai className={classes.actionButton} onClick={() => MySwal.clickDeny()}>
+                <ButtonHonkai glitch={true} className={classes.actionButton} onClick={() => MySwal.clickDeny()}>
                     {cancelButtonText}
                 </ButtonHonkai>
             }

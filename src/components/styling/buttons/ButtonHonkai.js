@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
+import { withTheme, withStyles } from '@material-ui/core/styles';
 
 const Styling = ({ palette, spacing }) => {
 	var
@@ -17,13 +17,13 @@ const Styling = ({ palette, spacing }) => {
 			background: buttonDefaultBackground,
 			margin:3,
 			border: 0,
-			display:'inline',
+			display:'inline-block',
 			position:'relative',
 			borderRadius:0,
 			overflow:'hidden',
 			fontSize:17,
 			clipPath: 'polygon(10px 0%, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)',
-			padding: '6px 17px',
+			padding: '8px 17px',
 			fontWeight:'bold',
 			'&::after, &::before':{
 				content: '\'\\00a0 \'',
@@ -60,7 +60,8 @@ const Styling = ({ palette, spacing }) => {
 			background:'red'
 		},
 		label:{
-			color:buttonColor
+			color:buttonColor,
+			textAlign:'center'
 		},
 		sizeLarge:{
 			padding: '7px 30px',
@@ -81,7 +82,7 @@ const Styling = ({ palette, spacing }) => {
 			}
 		},
 		containedPrimary:{
-			display:'inline-block',
+			// display:'inline-block',
 			boxShadow:'none',
 			borderRadius:spacing(1),
 			clipPath:'none',
@@ -100,6 +101,7 @@ const Styling = ({ palette, spacing }) => {
 			}
 		},
 		outlined:{
+			// display:'inline-block',
 			'&::after, &::before':{
 				transition:'all .3s ease-in-out'
 			},
@@ -142,21 +144,27 @@ const Styling = ({ palette, spacing }) => {
 			position:'absolute',
 			display:'grid',
 			alignItems:'center',
+			textAlign:'center',
 			width:'100%',
 			height:'100%',
-			background:buttonDefaultBackground,
+			background:palette.glitchBackground || palette.primary,
+			opacity:0,
 			top:0,
-			left:0
+			left:0,
+			'&:hover':{
+				opacity:1
+			}
 		}
 	}
 }
 
 function ButtonHonkai(props) {
-	const { classes, children, className, variant, color, ...other } = props;
-	const isGlitchMode = (!variant === !color)
+	var { classes, children, className, variant, glitch, color, ...other } = props;
+	variant = variant || 'contained'
+	color = color || 'default'
 	return (
 		<Button
-			variant={variant || 'contained'}
+			variant={variant}
 			color={color}
 			classes={{
 				root:clsx(classes.root,className, 'glitchy'),
@@ -171,7 +179,7 @@ function ButtonHonkai(props) {
 			{...other}
 		>
 			{children || 'medium'}
-			{isGlitchMode && 
+			{glitch &&
 				<span className={clsx(classes.glitch, 'glitchy-object')}>
 					{children}
 				</span>
@@ -186,4 +194,4 @@ ButtonHonkai.propTypes = {
 	className: PropTypes.string,
 };
 
-export default withStyles(Styling)(ButtonHonkai)
+export default withStyles(Styling)(withTheme(ButtonHonkai))

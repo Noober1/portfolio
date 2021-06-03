@@ -49,6 +49,13 @@ code {
     animation-direction: alternate;
 }
 
+/* stripes animation */
+
+@keyframes stripe {
+	0% {  background-position-x: 0;  }
+	100% {  background-position-x: 61px;  }
+}
+
 /* glitch  */
 @-webkit-keyframes glitch-anim-1 {
   0% {
