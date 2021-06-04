@@ -2,7 +2,7 @@ import { Box, Paper, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react'
 import clsx from 'clsx'
-import ButtonHonkai, { ButtonCyber } from '../../styling/buttons';
+import ButtonHonkai from '../../styling/buttons';
 
 const useStyles = makeStyles(theme => ({
     marginLeft: {

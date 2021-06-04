@@ -84,7 +84,7 @@ const Sweet = ({children, html, confirmButtonText, title, onConfirm, cancelButto
                 htmlContainer:classes.popupContent,
                 footer:classes.popupFooter
             },
-            html:(html),
+            html:html,
             footer:(<Wrapping/>)
         }).then((result) => {
             if (result.isConfirmed && onConfirm) {

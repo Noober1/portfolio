@@ -25,17 +25,24 @@ code {
     text-transform: uppercase;
 }
 
+.cursor-pointer {
+    cursor: pointer!important;
+}
+
 /* scrollbar */
 ::-webkit-scrollbar {
     width: 7px;
+    background-color: #F5F5F5;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+	background-color: #F5F5F5;background: #f1f1f1;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background-color: #000000;
+	border: 2px solid #555555;
 }
 
 ::-webkit-scrollbar-thumb:hover {

@@ -1,6 +1,6 @@
 import { AppBar, makeStyles, Toolbar, Typography } from '@material-ui/core'
 import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import ButtonHonkai from '../styling/buttons'
 import { BrightnessHighTwoTone, BrightnessLowTwoTone, AddBox, AddAPhoto } from '@material-ui/icons/';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,7 +8,7 @@ import { useAppContext } from '../utils/stateProvider';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx'
-import HtmlTooltip from '../pages/styles/tooltip';
+import HtmlTooltip from '../styling/tooltip';
 
 const useStyles = makeStyles(({palette,breakpoints, spacing}) => ({
     mainNavbar:{
@@ -84,14 +84,14 @@ const MainNavbar = () => {
     const { themeSwitcher, themeMode } = useAppContext()
     const theme = useTheme();
     const themeName = theme.palette.name || 'light'
-    const menuButtonVariant = themeName == 'dark' ? 'contained' : 'contained'
-    const menuButtonColor = themeName == 'dark' ? 'default' : 'primary'
+    const menuButtonVariant = themeName === 'dark' ? 'contained' : 'contained'
+    const menuButtonColor = themeName === 'dark' ? 'default' : 'primary'
 
     const isScreenSizeLarge = useMediaQuery(theme.breakpoints.up('lg'));
     const menuButtonSize = isScreenSizeLarge ? 'medium' : 'small'
 
     const themeToggler = () => {
-        if(themeMode == 'light') {
+        if(themeMode === 'light') {
             themeSwitcher('dark')
         } else {
             themeSwitcher('light')
@@ -102,7 +102,8 @@ const MainNavbar = () => {
         { to:'/', label:'Home' },
         { to:'/button', label:'Button' },
         { to:'/paper', label:'Paper' },
-        { to:'/swal', label:'Alert' }
+        { to:'/swal', label:'Alert' },
+        { to:'/progress', label:'Progress' }
     ]
 
     const MenuListRender = () => (
@@ -140,8 +141,6 @@ const MainNavbar = () => {
                     <HtmlTooltip
                         placement="left"
                         arrow={true}
-                        interactive={true}
-                        leaveDelay={1000}
                         title={
                             <Typography variant="subtitle1" component="span">
                                 Switch to {themeMode === 'light' ? 'dark mode' : 'light mode'}
@@ -149,7 +148,7 @@ const MainNavbar = () => {
                         }
                     >
                         <IconButton color="secondary" onClick={themeToggler} >
-                            {themeMode == 'light' ? <BrightnessHighTwoTone/> : <BrightnessLowTwoTone/>}
+                            {themeMode === 'light' ? <BrightnessHighTwoTone/> : <BrightnessLowTwoTone/>}
                         </IconButton>
                     </HtmlTooltip>
                     <IconButton color="secondary">

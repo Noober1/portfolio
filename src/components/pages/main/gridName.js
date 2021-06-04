@@ -1,32 +1,34 @@
-import { Box, fade, IconButton, makeStyles, Typography } from '@material-ui/core'
-import { Facebook, Twitter, GitHub, Reddit } from '@material-ui/icons/';
+import { Box, fade, makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
 import clsx from 'clsx'
-import HtmlTooltip from '../styles/tooltip';
+import SocialMediaLinks from './socialMediaLinks'
 
 
-const useStyles = makeStyles(({palette,spacing}) => {
+const useStyles = makeStyles(({palette,spacing,breakpoints}) => {
     let bgStripesFade = fade(palette.secondary.main, 0.7)
 
     return {
         gridName:{
             minHeight:'300px',
             height:`calc(100vh - ${spacing(2)}px)`,
-            maxHeight:'25vw',
+            maxHeight:'50vh',
             display:'grid',
             alignItems:'center',
-            overflowX:'hidden',
+            overflow:'hidden',
             position:'relative',
             '&::before':{
                 content: '\'\\00a0 \'',
                 width:'100%',
                 height:'50%',
                 maxHeight:'300px',
-                background:bgStripesFade,
+                background:palette.secondary.main,
                 position:'absolute',
-                bottom:0,
+                bottom:'-1px',
                 right:0,
                 clipPath:'polygon(30% 75%, 50% 75%, 53% 60%, 95% 60%, 100% 0%, 100% 100%, 0 100%, 0 50%, 25% 50%)'
+            },
+            [breakpoints.down('sm')]:{
+                maxHeight:'350px'
             }
         },
         bgStripes:{
@@ -46,21 +48,13 @@ const useStyles = makeStyles(({palette,spacing}) => {
             padding:spacing(2),
             color:palette.background.paper,
             background:palette.primary.main
+        },
+        socialMediaWrapper:{
+            display:'block',
+            textAlign:'center'
         }
     }
 })
-
-const SocialMediaTooltip = ({children, title}) => (
-    <HtmlTooltip
-        title={
-            <Typography variant="subtitle1" component="span">
-                {title}
-            </Typography>
-        }
-    >
-        {children}
-    </HtmlTooltip>
-)
 
 const GridName = () => {
 
@@ -75,27 +69,8 @@ const GridName = () => {
                         <span className={clsx(classes.glitchText,"text-impact text-uppercase")}>Cucu Ruhiyatna</span>
                     </Typography>
                 </Typography>
-                <div style={{display:'block',textAlign:'center'}}>
-                    <SocialMediaTooltip title="Follow me on facebook">
-                        <IconButton href="https://fb.me/ruhiyatna.cucu" target="blank">
-                            <Facebook fontSize="large"/>
-                        </IconButton>
-                    </SocialMediaTooltip>
-                    <SocialMediaTooltip title="Follow me on Twitter">
-                        <IconButton href="https://twitter.com/home" target="blank" >
-                            <Twitter fontSize="large"/>
-                        </IconButton>
-                    </SocialMediaTooltip>
-                    <SocialMediaTooltip title="Follow me on Reddit">
-                        <IconButton href="https://www.reddit.com/user/lordazhura" target="blank" >
-                            <Reddit fontSize="large"/>
-                        </IconButton>
-                    </SocialMediaTooltip>
-                    <SocialMediaTooltip title="Follow me on GitHub">
-                        <IconButton href="https://github.com/Noober1" target="blank" >
-                            <GitHub fontSize="large"/>
-                        </IconButton>
-                    </SocialMediaTooltip>
+                <div className={classes.socialMediaWrapper}>
+                    <SocialMediaLinks/>
                 </div>
             </div>
         </Box>

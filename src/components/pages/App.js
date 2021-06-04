@@ -1,4 +1,4 @@
-import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSizes, CssBaseline, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
+import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSizes, CssBaseline, Grid, makeStyles, ThemeProvider, Container } from '@material-ui/core';
 import { useState } from 'react';
 import { CookiesProvider, useCookies } from "react-cookie"
 import '../../assets/styles/App.css';
@@ -38,7 +38,8 @@ function App() {
 		return({
 			root:{
 				backgroundColor:theme.palette.background.default,
-				color:theme.palette.text.primary
+				color:theme.palette.text.primary,
+				overflowX:'hidden'
 			},
 			mainPage:{
 				minHeight:`calc(100vh - ${navbarSpacing}px)`,
@@ -58,14 +59,16 @@ function App() {
 				<CookiesProvider>
 					<Router>
 						<CssBaseline/>
-						<Grid container className={classes.root}>
-							<Grid item xs={12}>
-								<MainNavbar/>
+						<Container maxWidth="xl" disableGutters style={{boxShadow:'0px 0px 10px 0px'}}>
+							<Grid container className={classes.root}>
+								<Grid item xs={12}>
+									<MainNavbar/>
+								</Grid>
+								<Grid item xs={12} component="main" className={classes.mainPage}>
+									<Routes/>
+								</Grid>
 							</Grid>
-							<Grid item xs={12} component="main" className={classes.mainPage}>
-								<Routes/>
-							</Grid>
-						</Grid>
+						</Container>
 					</Router>
 				</CookiesProvider>
 			</ThemeProvider>
