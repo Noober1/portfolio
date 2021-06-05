@@ -134,7 +134,7 @@ const Skills = () => {
     )
 
     return (
-        <Box pt={6} pb={6} className={classes.skillsContainer}>
+        <Box pt={9} pb={6} className={classes.skillsContainer}>
             <span className={classes.triagleBg}/>
             <Container maxWidth="lg">
                 <Grid container>

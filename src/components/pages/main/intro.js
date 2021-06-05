@@ -8,7 +8,7 @@ import SocialMediaLinks from './socialMediaLinks'
 import { TitleText } from '../../styling/typography'
 import { Fade } from 'react-reveal';
 
-const useStyles = makeStyles(({palette,breakpoints}) => ({
+const useStyles = makeStyles(({palette,breakpoints,spacing}) => ({
     introBox2:{
         display:'grid',
         alignItems:'center',
@@ -16,6 +16,11 @@ const useStyles = makeStyles(({palette,breakpoints}) => ({
         height:'100%',
         minHeight:'300px',
         position:'relative',
+        paddingTop:spacing(9),
+        paddingBottom:spacing(4),
+        [breakpoints.down('sm')]:{
+            paddingTop:spacing(3)
+        },
         '&::before':{
             content:'""',
             width:'100%',
@@ -78,6 +83,13 @@ const useStyles = makeStyles(({palette,breakpoints}) => ({
                 transform:'translate(-25%, 0) skew(14deg) scale(1.1) rotate(5deg)'
             }
         }
+    },
+    socialMediaStyle:{
+        textAlign:'right',
+        [breakpoints.down('sm')]:{
+            textAlign:'center',
+            marginTop:spacing(3)
+        }
     }
 }))
 
@@ -109,7 +121,7 @@ const Intro = () => {
                 </Fade>
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={6} className="triggerHover-titleText">
-                    <Box pl={2} pt={2} pr={3} className={classes.introBox2}>
+                    <Box pl={3} pr={3} className={classes.introBox2}>
                         <Fade right>
                             <TitleText variant="h2" component="h2" align="right" className={clsx(classes.aboutText, "text-impact-italic")} gutterBottom>
                                 About Me
@@ -120,9 +132,9 @@ const Intro = () => {
                             <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText}>
                                 I have experience in the coding world since I was a first-grader in middle school. I remember my first project is reminder apps made by PHP language, and of course it's a simple apps and still a lot of bug tho :D If you want to say 'hi' or maybe treat me with a glass of coffee? You can come to my social media. See you again, friend :D
                             </Typography>
-                            <div style={{display:'block',textAlign:'right'}}>
+                            <Box className={classes.socialMediaStyle}>
                                 <SocialMediaLinks/>
-                            </div>
+                            </Box>
                         </Fade>
                     </Box>
             </Grid>

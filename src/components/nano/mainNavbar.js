@@ -99,6 +99,13 @@ const MainNavbar = () => {
     }
 
     const menuList = [
+        { to:'#', label:'Home' },
+        { to:'#intro', label:'About Me' },
+        { to:'#experience', label:'Experience' },
+        { to:'#portfolio', label:'Portfolio' },
+    ]
+
+    const menuListBackup = [
         { to:'/', label:'Home' },
         { to:'/button', label:'Button' },
         { to:'/paper', label:'Paper' },
@@ -112,16 +119,17 @@ const MainNavbar = () => {
             {menuList.map((item, index) => {
                 return(
                     <ButtonHonkai
-                        exact
+                        // exact
                         key={index}
                         glitch={true}
                         className={classes.menuButton}
                         color={menuButtonColor}
                         variant={menuButtonVariant}
                         size={menuButtonSize}
-                        component={NavLink}
-                        to={item.to}
-                        activeClassName="active"
+                        // component={NavLink}
+                        // to={item.to}
+                        href={item.to}
+                        // activeClassName="active"
                     >
                         {item.label}
                     </ButtonHonkai>

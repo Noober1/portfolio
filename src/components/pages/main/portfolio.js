@@ -40,30 +40,30 @@ const RenderCard = () => (
     {portfolio.map((item, index) => (
         <Grid item xs={12} key={index} md={6} lg={4}>
             <Fade left>
-            <Box p={1}>
-                <Card>
-                    <CardActionArea href={item.link} target="blank">
-                        <CardMedia
-                            style={{height:200}}
-                            image={item.imageUrl}
-                            title={item.title}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {item.title}
-                            </Typography>
-                            <Typography variant="body1" color="textPrimary" component="p" style={{minHeight:'40px'}}>
-                                {item.desc}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <ButtonHonkai variant="outlined" href={item.link}>
-                            Visit
-                        </ButtonHonkai>
-                    </CardActions>
-                </Card>
-            </Box>
+                <Box p={1}>
+                    <Card>
+                        <CardActionArea href={item.link} target="blank">
+                            <CardMedia
+                                style={{height:200}}
+                                image={item.imageUrl}
+                                title={item.title}
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {item.title}
+                                </Typography>
+                                <Typography variant="body1" color="textPrimary" component="p" style={{minHeight:'40px'}}>
+                                    {item.desc}
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <ButtonHonkai variant="outlined" href={item.link}>
+                                Visit
+                            </ButtonHonkai>
+                        </CardActions>
+                    </Card>
+                </Box>
             </Fade>
         </Grid>
     ))}
@@ -73,7 +73,7 @@ const RenderCard = () => (
 const Portfolio = () => {
     return (
         <Container maxWidth="lg">
-            <Box p={2}>
+            <Box pt={9} p={2}>
                 <Grid container className="triggerHover-titleText">
                     <Grid item xs={12}>
                         <TitleText variant="h2" component="h2" align="center" gutterBottom className="text-impact-italic">
