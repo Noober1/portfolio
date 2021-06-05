@@ -40,7 +40,7 @@ const LinearProgressWithLabel = ({ value, height, ...other}) => {
 				<LinearLoading variant="determinate" value={value} {...other} />
 			</Box>
 			<Box minWidth={35} pl={3} pr={3} className={classes.progressBox}>
-				<Typography variant="body2" color="textPrimary">
+				<Typography variant="body2" color="textPrimary" className="ZillaSlab bold">
 					{`${Math.round(value)}%`}
 				</Typography>
 			</Box>

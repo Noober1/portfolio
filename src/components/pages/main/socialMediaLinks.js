@@ -25,7 +25,7 @@ const SocialMediaLinks = () => {
             </IconButton>
         </SocialMediaTooltip>
         <SocialMediaTooltip title="Follow me on Twitter">
-            <IconButton href="https://twitter.com/home" target="blank" >
+            <IconButton href="https://twitter.com/cybersnatural" target="blank" >
                 <Twitter fontSize="large"/>
             </IconButton>
         </SocialMediaTooltip>

@@ -11,7 +11,7 @@ const useStyles = makeStyles(({palette,spacing,breakpoints}) => {
         gridName:{
             minHeight:'300px',
             height:`calc(100vh - ${spacing(2)}px)`,
-            maxHeight:'50vh',
+            maxHeight:'500px',
             display:'grid',
             alignItems:'center',
             overflow:'hidden',
@@ -27,8 +27,8 @@ const useStyles = makeStyles(({palette,spacing,breakpoints}) => {
                 right:0,
                 clipPath:'polygon(30% 75%, 50% 75%, 53% 60%, 95% 60%, 100% 0%, 100% 100%, 0 100%, 0 50%, 25% 50%)'
             },
-            [breakpoints.down('sm')]:{
-                maxHeight:'350px'
+            [breakpoints.down('lg')]:{
+                maxHeight:'100vh'
             }
         },
         bgStripes:{

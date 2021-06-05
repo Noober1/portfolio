@@ -1,3 +1,16 @@
+@font-face {
+    font-family: ZillaSlab;
+    src: url("../fonts/ZillaSlab-Regular.woff2");
+    font-weight: regular;
+}
+
+@font-face {
+    font-family: ZillaSlab;
+    src: url("../fonts/ZillaSlab-Bold.woff2");
+    font-weight: bold;
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -27,6 +40,14 @@ code {
 
 .cursor-pointer {
     cursor: pointer!important;
+}
+
+.ZillaSlab {
+    font-family: ZillaSlab!important;
+}
+
+.ZillaSlab.bold {
+    font-weight: bold;
 }
 
 /* scrollbar */

@@ -1,7 +1,6 @@
 import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSizes, CssBaseline, Grid, makeStyles, ThemeProvider, Container } from '@material-ui/core';
 import { useState } from 'react';
 import { CookiesProvider, useCookies } from "react-cookie"
-import '../../assets/styles/App.css';
 import { ContextProvider } from '../utils/stateProvider';
 import Themes from '../styling/theming';
 import { BrowserRouter as Router } from "react-router-dom";
