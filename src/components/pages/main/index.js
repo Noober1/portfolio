@@ -1,14 +1,18 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
+import { Grid, useTheme } from '@material-ui/core'
 import GridName from './gridName'
 import Intro from './intro'
 import Skills from './skills'
-import MainFooter from './footer'
+import LifeStyle from './lifestyle'
+import Quotes from './quotes'
+import Portfolio from './portfolio'
 
 const MainPage = () => {
 
+    const { spacing } = useTheme()
+
     return (
-        <Grid container>
+        <Grid container style={{marginTop:spacing(-5)}}>
             <Grid item xs={12} id="main-header">
                 <GridName/>
             </Grid>
@@ -19,13 +23,13 @@ const MainPage = () => {
                 <Skills/>
             </Grid>
             <Grid item xs={12} id="lifestyle">
-                disini lifestyle
+                <LifeStyle/>
             </Grid>
             <Grid item xs={12} id="portfolio">
-                portfolio
+                <Portfolio/>
             </Grid>
-            <Grid item xs={12} id="footer">
-                <MainFooter/>
+            <Grid item xs={12} id="quotes">
+                <Quotes/>
             </Grid>
         </Grid>
     )

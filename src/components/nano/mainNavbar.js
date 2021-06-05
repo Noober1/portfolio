@@ -103,7 +103,8 @@ const MainNavbar = () => {
         { to:'/button', label:'Button' },
         { to:'/paper', label:'Paper' },
         { to:'/swal', label:'Alert' },
-        { to:'/progress', label:'Progress' }
+        { to:'/progress', label:'Progress' },
+        { to:'/typography', label:'Typography' }
     ]
 
     const MenuListRender = () => (

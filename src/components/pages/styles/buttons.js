@@ -66,7 +66,7 @@ const Buttons = () => {
                 <ButtonHonkai color="primary">
                     Medium (default)
                 </ButtonHonkai>
-                <ButtonHonkai glitch={true} color="primary">
+                <ButtonHonkai color="primary">
                     Medium (default)
                 </ButtonHonkai>
                 <ButtonHonkai color="primary">
@@ -114,6 +114,15 @@ const Buttons = () => {
                 </ButtonHonkai><br/>
                 <Paper className={classes.padding}>
                     {`<ButtonHonkai variant="outlined" size="size">Large</ButtonHonkai>`}
+                </Paper>
+            </Box>
+            <Box m={1}>
+                <Title title="Button Honkai Style with glitch" subtitle="outlined"/>
+                <ButtonHonkai glitch={true} variant="outlined">
+                    Medium (default)
+                </ButtonHonkai><br/>
+                <Paper className={classes.padding}>
+                    {`<ButtonHonkai glitch={true} variant="outlined">`}
                 </Paper>
             </Box>
         </>

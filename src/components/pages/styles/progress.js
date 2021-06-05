@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from '@material-ui/core'
 import React from 'react'
-import LinearProgressWithLabel from './linearProgressWithLabel'
+import { LinearProgressWithLabel } from '../../styling/progress'
 
 
 const Title = ({title}) => (
@@ -30,6 +30,17 @@ const Progress = () => {
                     <pre>
     {`
     <LinearProgressWithLabel color="primary" variant="buffer" valueBuffer={60} height="10px" value={50}/>
+    `}
+                    </pre>
+                </Paper>
+            </Box>
+            <Box p={3}>
+                <Title title="Use glitch effect"/>
+                    <LinearProgressWithLabel glitch={true} height="10px" value={50}/>
+                <Paper>
+                    <pre>
+    {`
+    <LinearProgressWithLabel color="primary" glitch={true} height="10px" variant="indeterminate" value={50} />
     `}
                     </pre>
                 </Paper>

@@ -5,9 +5,9 @@ import App from './components/pages/App';
 import reportWebVitals from './components/pages/reportWebVitals';
 
 ReactDOM.render(
-	<React.StrictMode>
+	<React.Fragment>
 		<App />
-	</React.StrictMode>,
+	</React.Fragment>,
 	document.getElementById('ngulix')
 );
 

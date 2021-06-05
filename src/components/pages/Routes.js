@@ -5,6 +5,7 @@ import Buttons from './styles/buttons'
 import PaperCustom from './styles/paper'
 import Progress from './styles/progress'
 import SwalPage from './styles/swal';
+import TypographyPage from './styles/typography'
 
 const Routes = () => {
     return (
@@ -20,6 +21,9 @@ const Routes = () => {
             </Route>
             <Route path="/progress">
                 <Progress/>
+            </Route>
+            <Route path="/typography">
+                <TypographyPage/>
             </Route>
             <Route path="/">
                 <MainPage/>

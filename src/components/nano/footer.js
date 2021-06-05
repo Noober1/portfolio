@@ -1,8 +1,8 @@
 import { Box, Container, Typography } from '@material-ui/core'
-import PopupHonkai from '../../styling/alert'
+import PopupHonkai from '../styling/alert'
 import React from 'react'
-import SocialMediaLinks from './socialMediaLinks'
-import HtmlTooltip from '../../styling/tooltip'
+import SocialMediaLinks from '../pages/main/socialMediaLinks'
+import HtmlTooltip from '../styling/tooltip'
 
 const PopupDialog = () => (
     <div>

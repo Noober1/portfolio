@@ -1,16 +1,18 @@
 import { Box, Chip, Container, Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core'
 import React from 'react'
-import LinearWithValueLabel from '../styles/linearProgressWithLabel'
+import  { LinearProgressWithLabel } from '../../styling/progress'
 import picture4 from '../../../assets/images/picture4.png'
 import clsx from 'clsx'
 import ButtonHonkai from '../../styling/buttons'
+import { TitleText } from '../../styling/typography'
+import { Fade } from 'react-reveal'
 
 // percentage of skills
 const mySkills = [
     {
         name: "Web Front-End",
         value: 30,
-        apps:["HTML","CSS3","Javascript"]
+        apps:["HTML","CSS","Javascript"]
     },
     {
         name: "Web Back-End",
@@ -98,38 +100,37 @@ const Skills = () => {
     const textAlignByScreen = isScreenSm ? 'center' : 'left'
 
     const RenderMySkills = () => (
-        <>
-        {mySkills.map(item => (
-            <Box key={item.name} style={{position:'relative'}}>
-                <Typography variant="h5" component="h3" className="text-impact-italic">
-                    {item.name}
-                </Typography>
-                <LinearWithValueLabel height="10px" value={item.value} />
-            </Box>
-        ))}
-        </>
+        <Fade left cascade>
+            {mySkills.map(item => (
+                <Box key={item.name} style={{position:'relative'}}>
+                    <Typography variant="h5" component="h3" className="text-impact-italic">
+                        {item.name}
+                    </Typography>
+                    <LinearProgressWithLabel height="10px" value={item.value} />
+                </Box>
+            ))}
+        </Fade>
     )
 
     const RenderSkillChips = ({items}) => (
         <>
         {items.map(item => (
             <ButtonHonkai size="small" color="primary" key={item}>{item}</ButtonHonkai>
-            // <Chip size="small" color="secondary" classes={{label: 'ZillaSlab bold'}} key={item} label={item} style={{margin:'0px 5px 5px 0px'}}/>
         ))}
         </>
     )
 
     const RenderSkillDesc = () => (
-        <>
+        <Fade right cascade>
         {mySkills.map(item => (
-            <Box key={item.name}>
+            <Box key={item.name} mb={1}>
                 <Typography variant="subtitle1" component="h5" className="text-impact-italic">
                     {item.name}
                 </Typography>
                 <RenderSkillChips items={item.apps}/>
             </Box>
         ))}
-        </>
+        </Fade>
     )
 
     return (
@@ -137,13 +138,15 @@ const Skills = () => {
             <span className={classes.triagleBg}/>
             <Container maxWidth="lg">
                 <Grid container>
-                    <Grid item xs={12} sm={12} md={6} lg={6} style={{position:'relative'}}>
-                        <Typography variant="h2" component="h2" gutterBottom className={clsx(classes.textShadow,"text-impact-italic")} align={textAlignByScreen}>
-                            My Experience
-                        </Typography>
+                    <Grid item xs={12} sm={12} md={6} lg={6} style={{position:'relative'}} className="triggerHover-titleText">
+                        <Fade left>
+                            <TitleText variant="h2" component="h2" gutterBottom className={clsx(classes.textShadow,"text-impact-italic")} align={textAlignByScreen}>
+                                My Experience
+                            </TitleText>
                         <Typography variant="body1" component="div" className={classes.textShadow} gutterBottom align={textAlignByScreen}>
                             I love to learn something, especially about programming and designing
                         </Typography>
+                        </Fade>
                         <Box m={2}>
                             <RenderMySkills/>
                         </Box>

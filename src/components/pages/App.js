@@ -6,6 +6,7 @@ import Themes from '../styling/theming';
 import { BrowserRouter as Router } from "react-router-dom";
 import { MainNavbar } from '../nano';
 import Routes from './Routes';
+import MainFooter from '../nano/footer';
 
 function App() {
 	const themeColor = '#E34234'
@@ -19,7 +20,6 @@ function App() {
 	//create theming
 	let theme = createMuiTheme(Themes(themeMode,themeColor))
 	theme = responsiveFontSizes(theme)
-	console.log(theme)
 
 	//function to switch theme
 	const switchThemeMode = (mode) => {
@@ -42,7 +42,8 @@ function App() {
 			},
 			mainPage:{
 				minHeight:`calc(100vh - ${navbarSpacing}px)`,
-				paddingTop:navbarSpacing
+				marginTop:navbarSpacing,
+				paddingTop:navbarSpacing,
 			}
 		})
 	})
@@ -65,6 +66,9 @@ function App() {
 								</Grid>
 								<Grid item xs={12} component="main" className={classes.mainPage}>
 									<Routes/>
+								</Grid>
+								<Grid item xs={12} component="footer">
+									<MainFooter/>
 								</Grid>
 							</Grid>
 						</Container>

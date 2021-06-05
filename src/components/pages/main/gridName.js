@@ -2,7 +2,7 @@ import { Box, fade, makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
 import clsx from 'clsx'
 import SocialMediaLinks from './socialMediaLinks'
-
+import { Fade } from 'react-reveal'
 
 const useStyles = makeStyles(({palette,spacing,breakpoints}) => {
     let bgStripesFade = fade(palette.secondary.main, 0.7)
@@ -37,7 +37,6 @@ const useStyles = makeStyles(({palette,spacing,breakpoints}) => {
             animation:'stripe 1.5s infinite linear'
         },
         glitchWrapper: {
-            animation:'glitch-anim-1 2s linear infinite',
             fontStyle:'none',
             position:'absolute',
             top:0,
@@ -61,19 +60,21 @@ const GridName = () => {
     const classes = useStyles()
 
     return (
-        <Box p={1} className={clsx(classes.gridName, classes.bgStripes)}>
-            <div>
-                <Typography variant="h1" component="h1" align="center" className="text-impact-italic text-uppercase">
-                    Cucu Ruhiyatna
-                    <Typography variant="h1" component="span" align="center" className={classes.glitchWrapper}>
-                        <span className={clsx(classes.glitchText,"text-impact text-uppercase")}>Cucu Ruhiyatna</span>
-                    </Typography>
-                </Typography>
-                <div className={classes.socialMediaWrapper}>
-                    <SocialMediaLinks/>
+            <Box p={1} className={clsx(classes.gridName, classes.bgStripes)}>
+                <div>
+                    <Fade top delay={200}>
+                        <Typography variant="h1" component="h1" align="center" className="text-impact-italic text-uppercase">
+                            Cucu Ruhiyatna
+                            <Typography variant="h1" component="span" align="center" className={clsx(classes.glitchWrapper,'glitch')}>
+                                <span className={clsx(classes.glitchText,"text-impact text-uppercase")}>Cucu Ruhiyatna</span>
+                            </Typography>
+                        </Typography>
+                        <div className={classes.socialMediaWrapper}>
+                            <SocialMediaLinks/>
+                        </div>
+                    </Fade>
                 </div>
-            </div>
-        </Box>
+            </Box>
     )
 }
 

@@ -29,13 +29,13 @@ const LinearLoading = withStyles(({ palette, spacing }) => ({
 	}
 }))(LinearProgress)
 
-const LinearProgressWithLabel = ({ value, height, ...other}) => {
+const LinearProgressWithLabel = ({ value, glitch, height, ...other}) => {
 
 	const classes = style()
 	let boxHeight = height || '20px'
 
 	return (
-		<Box display="flex" alignItems="center">
+		<Box display="flex" alignItems="center" className={glitch ? 'glitch-2' : ''}>
 			<Box width="100%" height={boxHeight} mr={-2} className={classes.progressBox}>
 				<LinearLoading variant="determinate" value={value} {...other} />
 			</Box>
@@ -50,6 +50,7 @@ const LinearProgressWithLabel = ({ value, height, ...other}) => {
 
 LinearProgressWithLabel.propTypes = {
 	value: PropTypes.number.isRequired,
+	glitch: PropTypes.bool,
 };
 
 export default LinearProgressWithLabel

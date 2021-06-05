@@ -5,22 +5,32 @@ import picture3 from '../../../assets/images/picture3.png'
 import clsx from 'clsx'
 import React from 'react'
 import SocialMediaLinks from './socialMediaLinks'
+import { TitleText } from '../../styling/typography'
+import { Fade } from 'react-reveal';
 
-const useStyles = makeStyles(theme => ({
-    introBox:{
-        minHeight:'300px',
-        height:'50vh',
-        maxHeight:'50vh'
-    },
+const useStyles = makeStyles(({palette,breakpoints}) => ({
     introBox2:{
         display:'grid',
         alignItems:'center',
         overflow:'hidden',
         height:'100%',
-        minHeight:'300px'
+        minHeight:'300px',
+        position:'relative',
+        '&::before':{
+            content:'""',
+            width:'100%',
+            height:5,
+            background:`linear-gradient(90deg, transparent 0%, ${palette.secondary.main} 100%)`,
+            position:'absolute',
+            bottom:0,
+            right:0,
+            [breakpoints.down('sm')]:{
+                background:'none'
+            }
+        }
     },
     aboutText:{
-        [theme.breakpoints.down('sm')]:{
+        [breakpoints.down('sm')]:{
             textAlign:'center'
         }
     },
@@ -39,18 +49,18 @@ const useStyles = makeStyles(theme => ({
         position:'relative'
     },
     pictureGrid:{
-        background:`linear-gradient(90deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.main} 50%, ${theme.palette.background.default} 50%, ${theme.palette.background.default} 100%)`,
+        background:palette.background.default,
         height:'100vh',
         maxHeight:'500px',
-        [theme.breakpoints.down('sm')]:{
-            background:theme.palette.background.default,
+        [breakpoints.down('sm')]:{
+            background:palette.background.default,
             overflow:'hidden'
         }
     },
     pictureWrap:{
-        background:fade(theme.palette.background.default, 1),
-        boxShadow:'-4px 0px 0px 0px ' + theme.palette.secondary.main,
-        borderRight:'4px solid ' + theme.palette.secondary.main,
+        background:fade(palette.background.default, 1),
+        boxShadow:'-4px 0px 0px 0px ' + palette.secondary.main,
+        borderRight:'4px solid ' + palette.secondary.main,
         position:'absolute',
         paddingRight:'100%',
         width:0,
@@ -65,7 +75,7 @@ const useStyles = makeStyles(theme => ({
             transform:'translate(-25%, 0) skew(14deg)',
             '&:hover':{
                 opacity:1,
-                transform:'translate(-25%, 0) skew(14deg) scale(1.2)'
+                transform:'translate(-25%, 0) skew(14deg) scale(1.1) rotate(5deg)'
             }
         }
     }
@@ -78,41 +88,43 @@ const Intro = () => {
     return (
         <Grid container>
             <Grid item xs={12} sm={12} md={6} lg={6} style={{oveflow:'hidden'}}>
-                <div className={classes.pictureGrid}>
-                    <div className={classes.pictureSquare}>
-                        <div className={classes.pictureWrap}>
-                            <img alt="picture1" src={picture1}/>
+                <Fade left cascade>
+                    <div className={classes.pictureGrid}>
+                        <div className={classes.pictureSquare}>
+                            <div className={classes.pictureWrap}>
+                                <img alt="picture1" src={picture1}/>
+                            </div>
+                        </div>
+                        <div className={classes.pictureSquare}>
+                            <div className={classes.pictureWrap}>
+                                <img alt="picture2" src={picture2}/>
+                            </div>
+                        </div>
+                        <div className={classes.pictureSquare}>
+                            <div className={classes.pictureWrap}>
+                                <img alt="picture3" src={picture3}/>
+                            </div>
                         </div>
                     </div>
-                    <div className={classes.pictureSquare}>
-                        <div className={classes.pictureWrap}>
-                            <img alt="picture2" src={picture2}/>
-                        </div>
-                    </div>
-                    <div className={classes.pictureSquare}>
-                        <div className={classes.pictureWrap}>
-                            <img alt="picture3" src={picture3}/>
-                        </div>
-                    </div>
-                </div>
+                </Fade>
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-                <Box pl={2} pt={2} pr={3} className={classes.introBox2}>
-                    <div>
-                        <Typography variant="h2" component="h2" align="right" className={clsx(classes.aboutText, "text-impact-italic")} gutterBottom>
-                            About Me
-                        </Typography>
-                        <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText}>
-                            Hello there, my name is Cucu Ruhiyatna.<br/>I am a junior programmer who loves watching anime, gaming, and... traveling maybe?<br/>Also like programming and making something new even I still new at programming.
-                        </Typography>
-                        <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText}>
-                            I have experience in the coding world since I was a first-grader in middle school. I remember my first project is reminder apps made by PHP language, and of course it's a simple apps and still a lot of bug tho :D If you want to say 'hi' or maybe treat me with a glass of coffee? You can come to my social media. See you again, friend :D
-                        </Typography>
-                        <div style={{display:'block',textAlign:'right'}}>
-                            <SocialMediaLinks/>
-                        </div>
-                    </div>
-                </Box>
+            <Grid item xs={12} sm={12} md={6} lg={6} className="triggerHover-titleText">
+                    <Box pl={2} pt={2} pr={3} className={classes.introBox2}>
+                        <Fade right>
+                            <TitleText variant="h2" component="h2" align="right" className={clsx(classes.aboutText, "text-impact-italic")} gutterBottom>
+                                About Me
+                            </TitleText>
+                            <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText}>
+                                Hello there, my name is Cucu Ruhiyatna.<br/>I am a junior programmer who loves watching anime, gaming, and... traveling maybe?<br/>Also like programming and making something new even I still new at programming.
+                            </Typography>
+                            <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText}>
+                                I have experience in the coding world since I was a first-grader in middle school. I remember my first project is reminder apps made by PHP language, and of course it's a simple apps and still a lot of bug tho :D If you want to say 'hi' or maybe treat me with a glass of coffee? You can come to my social media. See you again, friend :D
+                            </Typography>
+                            <div style={{display:'block',textAlign:'right'}}>
+                                <SocialMediaLinks/>
+                            </div>
+                        </Fade>
+                    </Box>
             </Grid>
         </Grid>
     )
