@@ -23,9 +23,9 @@ const Quotes = () => {
     },[])
 
     return (
-        <Box alignContent="center" mt={5} mb={5}>
-            <Container maxWidth="md" style={{textAlign:'center'}}>
-                <Box p={2} style={{minHeight:'100px'}}>
+        <Box alignContent="center" style={{minHeight:'50vh',maxHeight:'600px',display:'grid',alignItems:'center'}}>
+            <Container maxWidth="lg" style={{textAlign:'center'}}>
+                <Box p={2}>
                     <Typography variant="h5" component="span" id="glitchType" className="ZillaSlab"/>
                 </Box>
             </Container>

@@ -2,6 +2,12 @@ import createPalette from "@material-ui/core/styles/createPalette"
 
 const Themes = (type,primaryColor) => {
 
+	const
+		blue = '#19d7fc',
+		yellow = '#ffdf00',
+		dark = '#303030',
+		light = '#fff'
+
 	const themeList = {
 		"dark":{
 			palette: createPalette({
@@ -19,7 +25,7 @@ const Themes = (type,primaryColor) => {
 				buttonHonkai:{
 					borderBottomColor:'#fff'
 				},
-				glitchBackground:'#19d7fc',
+				glitchBackground:blue,
 				//override
 				text:{
 					secondary:'#000'
@@ -28,12 +34,29 @@ const Themes = (type,primaryColor) => {
 					main:primaryColor
 				},
 				primary: {
-					main:'#19d7fc'
+					main:blue
 				},
 				secondary: {
-					main: '#ffdf00',
+					main: yellow,
 				},
-			})
+			}),
+			overrides: {
+				MuiCssBaseline: {
+					'@global': {
+						'*::-webkit-scrollbar': {
+							width: '7px',
+							backgroundColor: yellow
+						},
+						'*::-webkit-scrollbar-track': {
+							backgroundColor:light,
+							boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+						},
+						'*::-webkit-scrollbar-thumb': {
+							backgroundColor: yellow
+						},
+					},
+				},
+			}
 		},
 		"light":{
 			palette: createPalette({
@@ -51,7 +74,7 @@ const Themes = (type,primaryColor) => {
 				buttonHonkai:{
 					borderBottomColor:'#212121',
 				},
-				glitchBackground:'#ffdf00',
+				glitchBackground:yellow,
 				//override
 				text:{
 					secondary:'#FAFAFA'
@@ -60,12 +83,29 @@ const Themes = (type,primaryColor) => {
 					main:primaryColor
 				},
 				primary: {
-					main:'#ffdf00'
+					main:yellow
 				},
 				secondary: {
-					main: '#19d7fc',
+					main: blue,
 				}
-			})
+			}),
+			overrides: {
+				MuiCssBaseline: {
+					'@global': {
+						'*::-webkit-scrollbar': {
+							width: '7px',
+							backgroundColor: blue
+						},
+						'*::-webkit-scrollbar-track': {
+							backgroundColor:dark,
+							boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+						},
+						'*::-webkit-scrollbar-thumb': {
+							backgroundColor: blue
+						},
+					},
+				},
+			}
 		}
 	}
 

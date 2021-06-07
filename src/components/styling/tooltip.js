@@ -23,6 +23,11 @@ const HtmlTooltip = withStyles(({palette}) => ({
 	},
 	arrow: {
 		color: palette.text.primary,
+	},
+	tooltipPlacementTop:{
+		'&::before':{
+			bottom:'calc(100% + 3px)',
+		}
 	}
 }))(Tooltip);
 

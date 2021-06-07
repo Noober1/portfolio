@@ -120,13 +120,13 @@ const Intro = () => {
                     </div>
                 </Fade>
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6} className="triggerHover-titleText">
+            <Grid item xs={12} sm={12} md={6} lg={6}>
                     <Box pl={3} pr={3} className={classes.introBox2}>
                         <Fade right>
-                            <TitleText variant="h2" component="h2" align="right" className={clsx(classes.aboutText, "text-impact-italic")} gutterBottom>
+                            <TitleText variant="h2" component="h2" align="right" className={clsx(classes.aboutText, "text-impact-italic triggerHover-titleText")} gutterBottom>
                                 About Me
                             </TitleText>
-                            <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText}>
+                            <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText} >
                                 Hello there, my name is Cucu Ruhiyatna.<br/>I am a junior programmer who loves watching anime, gaming, and... traveling maybe?<br/>Also like programming and making something new even I still new at programming.
                             </Typography>
                             <Typography variant="body1" component="p" gutterBottom align="right" className={classes.aboutText}>

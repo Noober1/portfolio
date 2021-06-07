@@ -121,15 +121,15 @@ const Skills = () => {
     )
 
     const RenderSkillDesc = () => (
-        <Fade right cascade>
-        {mySkills.map(item => (
-            <Box key={item.name} mb={1}>
-                <Typography variant="subtitle1" component="h5" className="text-impact-italic">
-                    {item.name}
-                </Typography>
-                <RenderSkillChips items={item.apps}/>
-            </Box>
-        ))}
+        <Fade right cascade opposite={true}>
+            {mySkills.map(item => (
+                <Box key={item.name} mb={1}>
+                    <Typography variant="subtitle1" component="h5" className="text-impact-italic">
+                        {item.name}
+                    </Typography>
+                    <RenderSkillChips items={item.apps}/>
+                </Box>
+            ))}
         </Fade>
     )
 
@@ -138,9 +138,9 @@ const Skills = () => {
             <span className={classes.triagleBg}/>
             <Container maxWidth="lg">
                 <Grid container>
-                    <Grid item xs={12} sm={12} md={6} lg={6} style={{position:'relative'}} className="triggerHover-titleText">
+                    <Grid item xs={12} sm={12} md={6} lg={6} style={{position:'relative'}}>
                         <Fade left>
-                            <TitleText variant="h2" component="h2" gutterBottom className={clsx(classes.textShadow,"text-impact-italic")} align={textAlignByScreen}>
+                            <TitleText variant="h2" component="h2" gutterBottom className={clsx(classes.textShadow,"text-impact-italic triggerHover-titleText")} align={textAlignByScreen}>
                                 My Experience
                             </TitleText>
                         <Typography variant="body1" component="div" className={classes.textShadow} gutterBottom align={textAlignByScreen}>

@@ -1,14 +1,15 @@
-import { AppBar, makeStyles, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, Box, makeStyles, Toolbar, Typography } from '@material-ui/core'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import ButtonHonkai from '../styling/buttons'
-import { BrightnessHighTwoTone, BrightnessLowTwoTone, AddBox, AddAPhoto } from '@material-ui/icons/';
+import { Brightness2, Brightness2Outlined, ColorLens } from '@material-ui/icons/';
 import IconButton from '@material-ui/core/IconButton';
 import { useAppContext } from '../utils/stateProvider';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx'
 import HtmlTooltip from '../styling/tooltip';
+import PopupHonkai from '../styling/alert'
 
 const useStyles = makeStyles(({palette,breakpoints, spacing}) => ({
     mainNavbar:{
@@ -87,6 +88,20 @@ const MainNavbar = () => {
     const menuButtonVariant = themeName === 'dark' ? 'contained' : 'contained'
     const menuButtonColor = themeName === 'dark' ? 'default' : 'primary'
 
+    const PopupDialog = () => (
+        <Box>
+            <Typography variant="body1" gutterBottom>
+                Choose your desire color scheme by clicking the button below.<br/>Currently, color scheme only have 2 variant.
+            </Typography>
+            <ButtonHonkai size="large" onClick={() => themeSwitcher('dark')}>
+                Dark
+            </ButtonHonkai>
+            <ButtonHonkai size="large" onClick={() => themeSwitcher('light')}>
+                Light
+            </ButtonHonkai>
+        </Box>
+    )
+
     const isScreenSizeLarge = useMediaQuery(theme.breakpoints.up('lg'));
     const menuButtonSize = isScreenSizeLarge ? 'medium' : 'small'
 
@@ -157,15 +172,28 @@ const MainNavbar = () => {
                         }
                     >
                         <IconButton color="secondary" onClick={themeToggler} >
-                            {themeMode === 'light' ? <BrightnessHighTwoTone/> : <BrightnessLowTwoTone/>}
+                            {themeMode === 'light' ? <Brightness2/> : <Brightness2Outlined/>}
                         </IconButton>
                     </HtmlTooltip>
-                    <IconButton color="secondary">
-                        <AddBox/>
-                    </IconButton>
-                    <IconButton color="secondary">
-                        <AddAPhoto/>
-                    </IconButton>
+                    <PopupHonkai
+                        title="Switch color scheme"
+                        html={<PopupDialog/>}
+                        confirmButtonText={'Close'}
+                    >
+                        <HtmlTooltip
+                            placement="left"
+                            arrow={true}
+                            title={
+                                <Typography variant="subtitle1" component="span">
+                                    Switch color scheme
+                                </Typography>
+                            }
+                        >
+                            <IconButton color="secondary">
+                                <ColorLens/>
+                            </IconButton>
+                        </HtmlTooltip>
+                    </PopupHonkai>
                 </div>
             </Toolbar>
         </AppBar>
